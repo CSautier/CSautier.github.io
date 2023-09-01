@@ -2,6 +2,170 @@
    SINGLE PAGE/POST
    ========================================================================== */
 
+   div.publications h2 {
+    color: rgb(60, 60, 100);
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.thumbnail {
+   width: 500px;
+    border: 0px;
+    /* border: 1px solid rgb(0,0,255); */
+}
+
+.publications .authors {
+    font-size: 100%;
+    /* display: block; */
+}
+
+.publications a.authors {
+    color: rgb(250,0,0);
+    /* color: rgb(60, 109, 64); */
+    display: block;
+}
+
+.publications .title {
+    font-weight: bold;
+}
+
+.publications a {
+    color: rgb(76, 157, 150);
+    &:hover {
+      color: rgb(100, 200, 190);
+   }
+}
+
+.publications a.title {
+    color: rgb(76, 157, 150);
+    font-weight: bold;
+    &:hover {
+      color: rgb(100, 200, 190);
+   }
+}
+
+.publications .school {
+    font-size: 100%;
+}
+
+.publications .institution {
+    font-size: 100%;
+}
+
+.publications .number {
+    font-size: 100%;
+}
+
+.publications .in {
+    font-size: 100%;
+    font-style: italic;
+}
+
+.publications .pages {
+    font-size: 100%;
+    font-style: italic;
+}
+
+.publications .publisher {
+    font-size: 100%;
+    font-style: italic;
+}
+
+.publications .year {
+    font-size: 100%;
+}
+
+.publications .address {
+}
+
+.publications .note {
+    font-size: 100%;
+    font-style: italic;
+    color: rgb(157, 76, 83);
+}
+
+div.publications p {
+    margin-top: 6px;
+}
+
+table#publis {
+    width: 100%;
+    /* line-height: 22px; */
+/*    border-collapse: collapse;*/
+    border: 0px solid;
+    /* border-width: 1px 0; */
+}
+
+table#publis td {
+    padding-bottom : 15px;
+    padding-top : 15px;
+    padding-left : 5px;
+    border: 0px solid white;   
+}
+
+table#publis tr {
+    border: 0px solid white;
+}
+
+table#publis_mobile {
+    width: 100%;
+    border-left: 1px solid rgb(200, 200, 200);
+    border-top: 1px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+table#publis_mobile td {
+    padding-bottom : 15px;
+    padding-top : 15px;
+    padding-left : 5px;
+    border: 0px solid white;   
+}
+
+table#publis_mobile tr {
+       border: 0px solid white;
+}
+
+div.bibtex {
+    display     : none;
+    border      : 1px solid gray;
+    font-family : courier;
+/*    font-size : 10px;*/
+    line-height : 10px;
+    text-align  : left;
+    line-height: 15px;
+   margin: 5px;
+   padding: 5px;
+   transition: display 1s;
+}
+
+input.bibtex_button {
+    color: rgb(76, 157, 150);
+    text-decoration: underline;
+    background: white;
+    /* border: solid -1px #ffcf31; */
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.expandable {
+  background: #fff;
+  overflow: hidden;
+
+  transition: all .5s ease-in-out;
+  line-height: 0;
+  padding: 0 1em;
+  color: transparent;
+}
+ 
+.expandable:target {
+  line-height: 1.5;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: black;
+}
+
 #main {
   @include container;
   @include clearfix;
@@ -48,6 +212,11 @@
   font-size: $type-size-4;
 }
 
+div.news p {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
 .page__content {
 
   h2 {
@@ -74,9 +243,11 @@
 
   a {
     text-decoration: underline;
+    color: rgb(76, 157, 150);
 
-    &:hover {
+     &:hover {
       text-decoration: underline;
+      color: rgb(100, 200, 190);
 
       img {
         box-shadow: 0 0 10px rgba(#000, 0.25);

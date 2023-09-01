@@ -96,9 +96,9 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
     }
     var title_html = "";
     if (weblink != "") {
-    title_html = "<a class=\"title\" href=\"" + weblink + "\">" + trim(title, "{}") + "</a>";
+    title_html = "<a class=\"title\" href=\"" + weblink + "\">" + trim(title).replace(/[\{\}]/g, "") + "</a>";
     } else {
-    title_html = "<span class=\"title\">" + trim(title, "{}") + "</span>";
+    title_html = "<span class=\"title\">" + trim(title).replace(/[\{\}]/g, "") + "</span>";
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
     if (abstract) {
         var abstract_text = extract(entry, 'abstract');
         var abstract_html = "";
-        if (abstract != "") {
+        if (abstract_text != "") {
             abstract_html = "<br><span class=\"abstract\">" + abstract_text + "</span>";
         }
     }
@@ -230,7 +230,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
     bibtex_button_html += "\n<input type=\"button\" class=\"bibtex_button\" onclick=\"return toggle_bibtex('" + paper_tag + "_button', this)\" value=\"Show bibtex code\">";
     bibtex_button_html += "<div class=\"bibtex\" id=\"" + paper_tag + "_button\" style =\"display:none\">";
         bibtex_button_html += "@" + entry['entryType'] + "{" + paper_tag + ",<br>";
-    bibtex_button_html += "&nbsp;&nbsp;author = \"" + authors + "\",<br>";
+    bibtex_button_html += "&nbsp;&nbsp;author = {" + authors + "},<br>";
     bibtex_button_html += "&nbsp;&nbsp;title = {" + title + "},<br>";
         if (entry['entryType'] == 'inproceedings') {
          var booktitle = extract(entry, 'booktitle')
@@ -324,7 +324,7 @@ function bibtex2html_BibTex(bibtex_entries, compact, abstract)
     }
 
     if (number_for_this_year > 0 ) {
-    
+
         ret += "<h2>\n" + current_year.toString() + "</h2>\n";
         ret += "<table id=\"publis\">\n";
 
