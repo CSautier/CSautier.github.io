@@ -11,49 +11,36 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* PhD student at IMAGINE - Ecole des Ponts ParisTech & valeo.ai, ENPC, 2022 - present
+* M2 in Applied Mathematics, Vision and Learning (Master MVA), ENS Paris-Saclay, 2021
+* Master’s Degree in Science and Executive engineering, Mines Paristech, 2021
+* Research Exchange Semester, Massachusetts Institute of Technology, 2018
+* Preparatory Class in Mathematics and Physics, Lycée Louis Pasteur, 2017
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* 2021-2022: Research scientist, valeo.ai, Paris, France
+  * Research position before the start of a PhD, with focus on self-supervised representation learning for
+point clouds.
+  * Supervisor: Gilles Puy
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* 2021: Intern, valeo.ai, Paris, France
+  * Research focused on self-supervision for point clouds, using contrastive methods between camera
+and LiDAR representations of a scene.
 
-Publications
+* 2020: Intern, IBM Research, Tokyo, Japan
+  * Research among a team in IBM’s Tokyo Research Lab to study combination of
+automatic planners with Deep Learning.
+
+* 2020: Intern, Scio, London, United Kingdom
+  * Start-up specialized in automatic data extraction from unformatted documents. Built text and layout
+classifiers to improve parsing robustness. Carried out the transition from Keras to Pytorch for the
+main code.
+
+Publications  # TODO fix
 ======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://csautier.github.io/BibTex.js"></script>
+<script src="https://csautier.github.io/custom_BibTex.js"></script>
+<div class="publications"><div id="list_of_publications_here"></div></div>
+<script> bibtex2html_bibfile("https://csautier.github.io/list_of_publications.bib", "list_of_publications_here", true) </script>
