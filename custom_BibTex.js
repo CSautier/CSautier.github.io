@@ -366,7 +366,7 @@ function bibtex2html_BibTex(bibtex_entries, compact, abstract)
                 // weblink = "pp"
             }
             }
-            entry_html = entry2html(entry, false, true, abstract);
+            entry_html = entry2html(entry, false, true, compact, abstract);
             var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
             ret += anchor_html;
 
