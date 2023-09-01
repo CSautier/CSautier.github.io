@@ -156,7 +156,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
         var abstract_text = extract(entry, 'abstract');
         var abstract_html = "";
         if (abstract_text != "") {
-            abstract_html = "<br><span class=\"abstract\">" + abstract_text + "</span>";
+            abstract_html = "<br><p>" + abstract_text + "</p>";
         }
     }
 
@@ -267,15 +267,24 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
             if (end != "") {
                 end = end + " - " + code_html;
             }
+            else {
+                end = code_html
+            }
         }
         if (arxiv_vanity_html != "") {
             if (end != "") {
                 end = end + " - " + arxiv_vanity_html;
             }
+            else {
+                end = arxiv_vanity_html
+            }
         }
         if (bibtex_button_html != "") {
             if (end != "") {
                 end = end + " - " + bibtex_button_html;
+            }
+            else {
+                end = bibtex_button_html
             }
         }
         if (end != "") {
