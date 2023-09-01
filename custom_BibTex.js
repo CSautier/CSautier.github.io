@@ -71,7 +71,7 @@ function toggle_bibtex(ref, button) {
 }
 
 
-function entry2html(entry, arxiv_vanity = false, bibtex = true)
+function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false)
 {
     ret = "";
 
@@ -148,6 +148,16 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true)
     var note_html = "";
     if (note != "") {
     note_html = "<span class=\"note\">" + note + "</span>";
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    if (abstract) {
+        var abstract_text = extract(entry, 'abstract');
+        var abstract_html = "";
+        if (abstract != "") {
+            abstract_html = "<br><span class=\"abstract\">" + abstract_text + "</span>";
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -288,7 +298,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true)
     return "entry type not implemented for " + title;
 }
 
-function bibtex2html_BibTex(bibtex_entries)
+function bibtex2html_BibTex(bibtex_entries, compact, abstract)
 {
     var year = Number(extract(bibtex_entries.data[0], 'year'))
     var min_year = year;
@@ -333,12 +343,12 @@ function bibtex2html_BibTex(bibtex_entries)
                 // weblink = "pp"
             }
             }
-            entry_html = entry2html(entry);
+            entry_html = entry2html(entry, false, true, abstract);
             var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
             ret += anchor_html;
 
             ret += "<tr>\n";
-            if (img != '') {
+            if (img != '' && !compact) {
             ret += "<td>";
             if (weblink != '') {
                 ret += "<a href = \"" + weblink + "\">";
@@ -367,7 +377,7 @@ function bibtex2html_BibTex(bibtex_entries)
 }
 
 
-function bibtex2html_BibTex_on_mobile(bibtex_entries)
+function bibtex2html_BibTex_on_mobile(bibtex_entries, compact, abstract)
 {
     var year = Number(extract(bibtex_entries.data[0], 'year'))
     var min_year = year;
@@ -411,13 +421,13 @@ function bibtex2html_BibTex_on_mobile(bibtex_entries)
                 // weblink = "pp"
             }
             }
-            entry_html = entry2html(entry, true, false);
+            entry_html = entry2html(entry, true, false, abstract);
             var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
             ret += anchor_html;
 
             ret += "<table id=\"publis_mobile\">\n";
             ret += "<tr>\n";
-            if (img != '') {
+            if (img != '' && !compact) {
             ret += "<td>";
             if (weblink != '') {
                 ret += "<a href = \"" + weblink + "\">";
@@ -518,9 +528,9 @@ function bibtex2html_bibfile(bibfile_name, list_of_publications_id, compact = fa
     // we_are_on_mobile = true;
     
         if (we_are_on_mobile) {
-            document.getElementById(list_of_publications_id).innerHTML = bibtex2html_BibTex_on_mobile(bibtex_entries);
+            document.getElementById(list_of_publications_id).innerHTML = bibtex2html_BibTex_on_mobile(bibtex_entries, compact, abstract);
         } else {
-            document.getElementById(list_of_publications_id).innerHTML = bibtex2html_BibTex(bibtex_entries);
+            document.getElementById(list_of_publications_id).innerHTML = bibtex2html_BibTex(bibtex_entries, compact, abstract);
         }
     
     });
