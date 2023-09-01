@@ -71,7 +71,7 @@ function toggle_bibtex(ref, button) {
 }
 
 
-function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false)
+function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false, abstract = false)
 {
     ret = "";
 
@@ -246,25 +246,48 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
     
     ////////////////////////////////////////////////////////////////////////////////
     
-    var end = "";
-    if (project_html != "") {
+    // var end = "";
+    // if (project_html != "") {
+    //     if (arxiv_vanity_html != "") {
+    //     end = "<p>" + project_html + " - " + arxiv_vanity_html + "</p>";
+    // } else if (bibtex_button_html != "") {
+    //     end = "<p>" + project_html + " - " + bibtex_button_html + "</p>";        
+    // } else {
+    //     end = "<p>" + project_html + "</p>";
+    // }
+    // } else if (arxiv_vanity_html != "") {
+    //     end = "<p>" + arxiv_vanity_html + "</p>";
+    // } else if (bibtex_button_html != "") {
+    // end = "<p>" + bibtex_button_html + "</p>";        
+    // }
+
+    if (!compact) {
+        var end = project_html;
+        if (code_html != "") {
+            if (end != "") {
+                end = end + " - " + code_html;
+            }
+        }
         if (arxiv_vanity_html != "") {
-        end = "<p>" + project_html + " - " + arxiv_vanity_html + "</p>";
-    } else if (bibtex_button_html != "") {
-        end = "<p>" + project_html + " - " + bibtex_button_html + "</p>";        
-    } else {
-        end = "<p>" + project_html + "</p>";
+            if (end != "") {
+                end = end + " - " + arxiv_vanity_html;
+            }
+        }
+        if (bibtex_button_html != "") {
+            if (end != "") {
+                end = end + " - " + bibtex_button_html;
+            }
+        }
+        if (end != "") {
+            end = "<p>" + end + "</p>";
+        }
     }
-    } else if (arxiv_vanity_html != "") {
-        end = "<p>" + arxiv_vanity_html + "</p>";
-    } else if (bibtex_button_html != "") {
-    end = "<p>" + bibtex_button_html + "</p>";        
-    }
+
     
     if (entry['entryType'] == 'inproceedings') {
-    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html + end;
+    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html + abstract_html + end;
     } else if (entry['entryType'] == 'article') {
-    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html + end;
+    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html + abstract_html + end;
     } else if (entry['entryType'] == 'inbook') {
     var booktitle = extract(entry, 'title');
     var booktitle_html = "Chapter in <span class=\"in\">" + booktitle + "</span>";
@@ -274,7 +297,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
         var publisher_html = "<span class=\"publisher\">" + publisher + "</span>";
         ret += ". " + publisher_html;
     }
-    ret += ", " + year_html + ". " + note_html + end;
+    ret += ", " + year_html + ". " + note_html + abstract_html + end;
     return ret;
     } else if (entry['entryType'] == 'techreport') {
     var ret = title_html + ". " + authors_html + ". ";
@@ -287,10 +310,10 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, abstract = false
     if (number != "") {
         ret += ", <span class=\"number\">" + number + "</span>";
     }
-    ret += ", " + year_html + ". " + note_html + end;
+    ret += ", " + year_html + ". " + note_html + abstract_html + end;
     return ret;
     } else if (entry['entryType'] == 'hdr') {
-    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html;
+    return title_html + ". " + authors_html + ". " + venue_html + ", " + year_html + ". " + note_html + abstract_html ;
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -421,7 +444,7 @@ function bibtex2html_BibTex_on_mobile(bibtex_entries, compact, abstract)
                 // weblink = "pp"
             }
             }
-            entry_html = entry2html(entry, true, false, abstract);
+            entry_html = entry2html(entry, true, false, compact, abstract);
             var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
             ret += anchor_html;
 
@@ -450,65 +473,6 @@ function bibtex2html_BibTex_on_mobile(bibtex_entries, compact, abstract)
         }
 
     }
-    }
-
-    return ret;
-}
-
-
-function bibtex2html_BibTex_on_mobile_old(bibtex_entries)
-{
-    var year = Number(extract(bibtex_entries.data[0], 'year'))
-    var min_year = year;
-    var max_year = year;
-    for (var i=0; i<bibtex_entries.data.length; i++){
-    year = Number(extract(bibtex_entries.data[i], 'year'))
-    if (year > max_year) { max_year = year; }
-    if (year < min_year) { min_year = year; }
-    }
-
-    var ret = "";
-    
-    for (var current_year = max_year; current_year >= min_year; current_year--) {
-    ret += "<h2>\n" + current_year.toString() + "</h2>\n";
-
-    for (var i=0; i<bibtex_entries.data.length; i++){
-        var entry = bibtex_entries.data[i];
-        var year = Number(extract(entry, 'year'));
-        if (year == current_year) {
-        var img = extract(entry, 'img');
-        var weblink = extract(entry, 'weblink');
-        if (weblink == "") {
-          weblink = extract(entry, 'pdf');
-        }
-        entry_html = entry2html(entry, true, false);
-        var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
-        ret += anchor_html;
-
-        ret += "<table id=\"publis_mobile\">\n";
-        ret += "<tr>\n";
-        if (img != '') {
-            ret += "<td>";
-            if (weblink != '') {
-            ret += "<a href = \"" + weblink + "\">";
-            }
-            ret += "<img alt = \"<missing>\" width = 300 src = \"" + image_root + "/" + img + "\" class = \"thumbnail\" ></img>";
-            if (weblink != '') {
-            ret += "</a>";
-            }
-            ret += "</td></tr><tr><td>";
-            ret += entry_html;
-            ret += "</td></tr>\n";
-        } else {
-            ret += "<td>";
-            ret += entry_html;
-            ret += "</td>";
-        }
-        ret += "</tr>\n";
-             ret += "</table>\n";            
-        }
-    }
-
     }
 
     return ret;

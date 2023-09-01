@@ -37,7 +37,7 @@ automatic planners with Deep Learning.
 classifiers to improve parsing robustness. Carried out the transition from Keras to Pytorch for the
 main code.
 
-Publications  # TODO fix
+Publications
 ======
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://csautier.github.io/BibTex.js"></script>
