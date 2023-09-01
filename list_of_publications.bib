@@ -5,8 +5,6 @@
   year      = 2023,
   pdf       = {https://arxiv.org/abs/2212.05867},
   code      = {https://github.com/valeoai/ALSO},
-  img       = {images/papers_thumbnails/also.png},
-  abstract  = {We propose a new self-supervised method for pre-training the backbone of deep perception models operating on point clouds. The core idea is to train the model on a pretext task which is the reconstruction of the surface on which the 3D points are sampled, and to use the underlying latent vectors as input to the perception head. The intuition is that if the network is able to reconstruct the scene surface, given only sparse input points, then it probably also captures some fragments of semantic information, that can be used to boost an actual perception task. This principle has a very simple formulation, which makes it both easy to implement and widely applicable to a large range of 3D sensors and deep networks performing semantic segmentation or object detection. In fact, it supports a single-stream pipeline, as opposed to most contrastive learning approaches, allowing training on limited resources. We conducted extensive experiments on various autonomous driving datasets, involving very different kinds of lidars, for both semantic segmentation and object detection. The results show the effectiveness of our method to learn useful representations without any annotation, compared to existing approaches.}
 }
 
 @InProceedings{SLidR,
@@ -16,9 +14,7 @@
   year      = 2022,
   pdf       = {https://arxiv.org/abs/2203.16258},
   code      = {https://github.com/valeoai/SLidR},
-  img       = {images/papers_thumbnails/slidr.png},
-  abstract  = {Segmenting or detecting objects in sparse Lidar point clouds are two important tasks in autonomous driving to allow a vehicle to act safely in its 3D environment. The best performing methods in 3D semantic segmentation or object detection rely on a large amount of annotated data. Yet annotating 3D Lidar data for these tasks is tedious and costly. In this context, we propose a self-supervised pre-training method for 3D perception models that is tailored to autonomous driving data. Specifically, we leverage the availability of synchronized and calibrated image and Lidar sensors in autonomous driving setups for distilling self-supervised pre-trained image representations into 3D models. Hence, our method does not require any point cloud nor image annotations. The key ingredient of our method is the use of superpixels which are used to pool 3D point features and 2D pixel features in visually similar regions. We then train a 3D network on the self-supervised task of matching these pooled point features with the corresponding pooled image pixel features. The advantages of contrasting regions obtained by superpixels are that: (1) grouping together pixels and points of visually coherent regions leads to a more meaningful contrastive task that produces features well adapted to 3D semantic segmentation and 3D object detection; (2) all the different regions have the same weight in the contrastive loss regardless of the number of 3D points sampled in these regions; (3) it mitigates the noise produced by incorrect matching of points and pixels due to occlusions between the different sensors. Extensive experiments on autonomous driving datasets demonstrate the ability of our image-to-Lidar distillation strategy to produce 3D representations that transfer well on semantic segmentation and object detection tasks.}
-}
+  }
 
 @InProceedings{sautier_ijcai2020,
   title     ={State Prediction in TextWorld with a Predicate-Logic Pointer Network Architecture},
@@ -26,5 +22,4 @@
   booktitle = {Workshop on Knowledge-based Reinforcment Learning at IJCAI 2020},
   year      = 2020,
   pdf       = {https://kbrl.github.io/papers/08-KBRL.pdf},
-  abstract  = {Our work builds toward AI agents that can take advantage of data and deep learning while making use of the structure, extensibility and explainability of logical models with automated planning. We believe such agents have the potential to surpass many of the inherent limitations of current RL-based agents. Towards this long term goal, we aim to improve the capability of deep learning as a front-end to produce logical state representations required by planners. Specifically, we are interested in text-based games where we use Transformers to translate the unstructured textual description in the game into logical states. To improve the neural network architecture for this problem setting, we propose to augment the Transformer with a pointer network in a two-staged architecture. Our results show a clear improvement over a baseline Transformer network.}
 }
