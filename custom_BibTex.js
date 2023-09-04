@@ -152,9 +152,9 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
 
     ////////////////////////////////////////////////////////////////////////////////
 
+    var abstract_html = "";
     if (abstract) {
         var abstract_text = extract(entry, 'abstract');
-        var abstract_html = "";
         if (abstract_text != "") {
             abstract_html = "<br><p>" + abstract_text + "</p>";
         }
@@ -245,24 +245,10 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
     }
     
     ////////////////////////////////////////////////////////////////////////////////
-    
-    // var end = "";
-    // if (project_html != "") {
-    //     if (arxiv_vanity_html != "") {
-    //     end = "<p>" + project_html + " - " + arxiv_vanity_html + "</p>";
-    // } else if (bibtex_button_html != "") {
-    //     end = "<p>" + project_html + " - " + bibtex_button_html + "</p>";        
-    // } else {
-    //     end = "<p>" + project_html + "</p>";
-    // }
-    // } else if (arxiv_vanity_html != "") {
-    //     end = "<p>" + arxiv_vanity_html + "</p>";
-    // } else if (bibtex_button_html != "") {
-    // end = "<p>" + bibtex_button_html + "</p>";        
-    // }
 
+    var end = "";
     if (!compact) {
-        var end = project_html;
+        end = project_html;
         if (code_html != "") {
             if (end != "") {
                 end = end + " - " + code_html;
@@ -381,7 +367,7 @@ function bibtex2html_BibTex(bibtex_entries, compact, abstract)
 
             ret += "<tr>\n";
             if (img != '' && !compact) {
-            ret += "<td>";
+            ret += "<td style=\"width:30%\">";
             if (weblink != '') {
                 ret += "<a href = \"" + weblink + "\">";
             }
