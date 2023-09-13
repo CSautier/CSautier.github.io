@@ -1,7 +1,7 @@
 ---
 permalink: /
-title: "About me"
-excerpt: "About me"
+title: "Corentin Sautier"
+excerpt: "Corentin Sautier"
 author_profile: true
 redirect_from: 
   - /about/
