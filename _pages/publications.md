@@ -1,6 +1,7 @@
 ---
 layout: archive
 title: "Publications"
+sitemap: true
 permalink: /publications/
 author_profile: true
 ---

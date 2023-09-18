@@ -1,4 +1,5 @@
 ---
+sitemap: true
 permalink: /
 title: "Corentin Sautier"
 excerpt: "Corentin Sautier"
