@@ -439,7 +439,7 @@ function bibtex2html_BibTex_on_mobile(bibtex_entries, compact, abstract)
                 // weblink = "pp"
             }
             }
-            entry_html = entry2html(entry, true, false, compact, abstract);
+            entry_html = entry2html(entry, true, true, compact, abstract);
             var anchor_html = "<a id=\"" + entry['cite'] + "\"></a>";        
             ret += anchor_html;
 

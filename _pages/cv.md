@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "CV"
-sitemap: false
+sitemap: true
 permalink: /cv/
 author_profile: true
 redirect_from:

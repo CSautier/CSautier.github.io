@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Corentin Sautier"
 title_separator          : "-"
 name                     : &name "Corentin Sautier"
-description              : &description "PhD student at ENPC & valeo.ai"
+description              : &description "Ph.D. student at ENPC & valeo.ai"
 url                      : https://csautier.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "CSautier/CSautier.github.io"
@@ -50,7 +50,7 @@ atom_feed:
   path                   : # blank (default) uses feed.xml
 
 # SEO Related
-google_site_verification :
+google_site_verification : "uTxg1PJlMnPMr"
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Corentin Sautier"
   avatar           : #"profile.png"
-  bio              : "PhD student at  <a href = https://imagine-lab.enpc.fr/>Imagine</a>/ <a href=http://ligm.u-pem.fr/>LIGM</a><br/><a href=https://www.ecoledesponts.fr/en>Ecole des Ponts ParisTech</a>, under the supervision of <a href = https://vincentlepetit.github.io/>Vincent Lepetit</a>, and at <a href = https://ptrckprz.github.io/valeoai/>valeo.ai</a> with <a href = https://sites.google.com/site/puygilles/>Gilles Puy</a>, <a href = https://boulch.eu/>Alexandre Boulch</a> and <a href = http://imagine.enpc.fr/~marletr/>Renaud Marlet</a>."
+  bio              : "Ph.D. student at  <a href = https://imagine-lab.enpc.fr/>Imagine</a>/ <a href=http://ligm.u-pem.fr/>LIGM</a><br/><a href=https://www.ecoledesponts.fr/en>Ecole des Ponts ParisTech</a>, under the supervision of <a href = https://vincentlepetit.github.io/>Vincent Lepetit</a>, and at <a href = https://ptrckprz.github.io/valeoai/>valeo.ai</a> with <a href = https://sites.google.com/site/puygilles/>Gilles Puy</a>, <a href = https://boulch.eu/>Alexandre Boulch</a> and <a href = http://imagine.enpc.fr/~marletr/>Renaud Marlet</a>."
   location         : "Paris, France"
   employer         :
   pubmed           :
