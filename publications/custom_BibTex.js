@@ -7,9 +7,9 @@ pdf_root   = ""
 
 
 var expanded_venues = [
-    "3DV",   "International Conference on 3D Vision",
+    "3DV",   "International Conference on 3D Vision (<b>3DV</b>)",
     "ACCV",  "Proceedings of the Asian Conference on Computer Vision (<b>ACCV</b>)",
-    "arXiv", "arXiv",
+    "arxiv", "arXiv",
     "ARXIV", "arXiv",
     "BMVC",  "Proceedings of the British  Machine Vision Conference (<b>BMVC</b>)",
     "CVIU",  "Computer Vision and Image Understanding (<b>CVIU</b>)",
@@ -134,7 +134,7 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
     venue_html = "In <i>" + uniformize_venue(booktitle) + "</i>";
     } else if (entry['entryType'] == 'article') {
     var journal = extract(entry, 'journal')
-    venue_html = uniformize_venue(journal);
+    venue_html = "In <i>" + uniformize_venue(journal) + "</i>";
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -236,8 +236,11 @@ function entry2html(entry, arxiv_vanity = false, bibtex = true, compact = false,
          var booktitle = extract(entry, 'booktitle')
         bibtex_button_html += "&nbsp;&nbsp;booktitle = {" + uniformize_venue(booktitle).replace(/<[^>]*>/g, '') + "},<br>";
         } else if (entry['entryType'] == 'article') {
-        var journal = extract(entry, 'journal')
-        bibtex_button_html += "&nbsp;&nbsp;journal = {" + uniformize_venue(journal).replace(/<[^>]*>/g, '') + "},<br>";
+        var journal = uniformize_venue(extract(entry, 'journal'))
+        if (journal === "arXiv") {
+            journal = journal + ":" + extract(entry, 'eprint');
+        }
+        bibtex_button_html += "&nbsp;&nbsp;journal = {" + journal.replace(/<[^>]*>/g, '') + "},<br>";
         }
     bibtex_button_html += "&nbsp;&nbsp;year = " + year + "<br>";
     bibtex_button_html += "}";
