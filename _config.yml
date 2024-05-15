@@ -105,8 +105,8 @@ analytics:
 # Site Author
 author:
   name             : "Corentin Sautier"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Ph.D. student at [Imagine](https://imagine-lab.enpc.fr) / [LIGM](http://ligm.u-pem.fr/)<br>[Ecole des Ponts ParisTech](https://www.ecoledesponts.fr/en), under the supervision of [Vincent Lepetit](https://vincentlepetit.github.io/);<br>and at [valeo.ai](https://ptrckprz.github.io/valeoai/) with [Gilles Puy](https://sites.google.com/site/puygilles/), [Alexandre Boulch](https://boulch.eu/) and [Renaud Marlet](http://imagine.enpc.fr/~marletr/)."
+  avatar           : "/images/profile.jpg"  # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Ph.D. student at [Imagine](https://imagine-lab.enpc.fr) / [LIGM](http://ligm.u-pem.fr/) - [Ecole des Ponts ParisTech](https://www.ecoledesponts.fr/en), under the supervision of [Vincent Lepetit](https://vincentlepetit.github.io/); and at [valeo.ai](https://ptrckprz.github.io/valeoai/) with [Gilles Puy](https://sites.google.com/site/puygilles/), [Alexandre Boulch](https://boulch.eu/) and [Renaud Marlet](http://imagine.enpc.fr/~marletr/)."
   location         : "Paris, France"
   email            : "corentin.sautier@enpc.fr"
 
