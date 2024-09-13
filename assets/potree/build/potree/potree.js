@@ -66340,7 +66340,7 @@ void main() {
 				let urlOctree = `${this.url}/../octree.bin`;
 
 				let first = byteOffset;
-				let last = byteOffset + byteSize - 1n;
+				let last = byteOffset + byteSize - 1;
 
 				let buffer;
 
