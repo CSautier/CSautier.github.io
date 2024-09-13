@@ -1,34 +1,47 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"sautier":
+  - firstname: ["Corentin", "C."]
+    url: https://csautier.github.io/
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"puy":
+  - firstname: ["Gilles", "G."]
+    url: https://sites.google.com/site/puygilles/
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"gidaris":
+  - firstname: ["Spyros", "Spyridon", "S."]
+    url: https://scholar.google.fr/citations?user=7atfg7EAAAAJ
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"boulch":
+  - firstname: ["Alexandre", "A.", "Alex"]
+    url: https://boulch.eu/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"simeoni":
+  - firstname: ["Oriane", "O."]
+    url: https://csautier.github.io/
 
-"przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"marlet":
+  - firstname: ["Renaud", "R."]
+    url: http://imagine.enpc.fr/~marletr/
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"perez":
+  - firstname: ["Patrick", "P."]
+    url: https://ptrckprz.github.io/
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"bursuc":
+  - firstname: ["Andrei", "A."]
+    url: https://abursuc.github.io/
 
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"lepetit":
+  - firstname: ["Vincent", "V."]
+    url: https://vincentlepetit.github.io/
+
+"tatsubori":
+  - firstname: ["Michiaki", "Mich"]
+    url: https://research.ibm.com/people/michiaki-tatsubori
+
+"agravante":
+  - firstname: ["Don Joven"]
+    url: https://research.ibm.com/people/don-joven-ravoy-agravante
+
+"michele":
+  - firstname: ["Björn", "Bjoern", "B."]
+    url: https://www.bjoernmichele.com/
