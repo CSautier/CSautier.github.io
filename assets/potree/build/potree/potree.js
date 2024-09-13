@@ -66344,7 +66344,7 @@ void main() {
 
 				let buffer;
 
-				if(byteSize === 0n){
+				if(byteSize === 0){
 					buffer = new ArrayBuffer(0);
 					console.warn(`loaded node with 0 bytes: ${node.name}`);
 				}else {
@@ -66473,10 +66473,6 @@ void main() {
 				let byteOffset = view.getBigInt64(i * bytesPerNode + 6, true);
 				let byteSize = view.getBigInt64(i * bytesPerNode + 14, true);
 
-				// if(byteSize === 0n){
-				// 	// debugger;
-				// }
-
 
 				if(current.nodeType === 2){
 					// replace proxy with real node
@@ -66495,7 +66491,7 @@ void main() {
 					current.numPoints = numPoints;
 				}
 
-				if(current.byteSize === 0n){
+				if(current.byteSize === 0){
 					// workaround for issue #1125
 					// some inner nodes erroneously report >0 points even though have 0 points
 					// however, they still report a byteSize of 0, so based on that we now set node.numPoints to 0
@@ -66550,7 +66546,7 @@ void main() {
 			let hierarchyPath = `${this.url}/../hierarchy.bin`;
 			
 			let first = hierarchyByteOffset;
-			let last = first + hierarchyByteSize - 1n;
+			let last = first + hierarchyByteSize - 1;
 
 			let response = await fetch(hierarchyPath, {
 				headers: {
@@ -66727,8 +66723,8 @@ void main() {
 			let root = new OctreeGeometryNode("r", octree, boundingBox);
 			root.level = 0;
 			root.nodeType = 2;
-			root.hierarchyByteOffset = 0n;
-			root.hierarchyByteSize = BigInt(metadata.hierarchy.firstChunkSize);
+			root.hierarchyByteOffset = 0;
+			root.hierarchyByteSize = metadata.hierarchy.firstChunkSize;
 			root.hasChildren = false;
 			root.spacing = octree.spacing;
 			root.byteOffset = 0;
