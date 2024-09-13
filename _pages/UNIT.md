@@ -79,7 +79,7 @@ We generate pseudo-labels of instances across time in Lidar scans (4D-Seg), whic
 
 
 <div class="rendering">
-    <iframe src="/assets/potree/rendering.html?data-path=./pointclouds/rendering2/cloud.js" width="100%" height=500px frameborder="0"></iframe>
+    <iframe src="/assets/potree/rendering.html?data-path=./pointclouds/rendering/cloud.json" width="100%" height=500px frameborder="0"></iframe>
     <div class="caption">
         Instance segmentation of UNIT on aggregated frames, validation set of SemanticKITTI. Moving objects appear elongated in world coordinates aggregated scans.
     </div>
