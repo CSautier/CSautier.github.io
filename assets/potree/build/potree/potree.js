@@ -72783,7 +72783,7 @@ ENDSEC
 				}
 
 				if (points.data.rgba || points.data.color) {
-					let rgba = points.data.rgba ?? points.data.color;
+					let rgba = (points.data.rgba !== null && points.data.rgba !== undefined) ? points.data.rgba : points.data.color;
 					view.setUint16(boffset + 20, (rgba[4 * i + 0] * 255), true);
 					view.setUint16(boffset + 22, (rgba[4 * i + 1] * 255), true);
 					view.setUint16(boffset + 24, (rgba[4 * i + 2] * 255), true);
