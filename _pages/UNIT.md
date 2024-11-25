@@ -231,11 +231,10 @@ We generate pseudo-labels of instances across time in Lidar scans (4D-Seg), whic
 {% raw %}
 
 ```bibtex
-@article{sautier2025unit,
+@inproceedings{sautier2025unit,
   title = {{UNIT}: Unsupervised Online Instance Segmentation through Time},
   author = {Corentin Sautier and Gilles Puy and Alexandre Boulch and Renaud Marlet and Vincent Lepetit},
-  arxiv={2310.17504},
-  journal={arXiv},
+  booktitle={3DV},
   year = {2025}
 }
 ```
