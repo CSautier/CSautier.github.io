@@ -58548,7 +58548,7 @@ void main() {
 		pos = pos / pos.w;
 		float expDepth = pos.z;
 		depth = (pos.z + 1.0) / 2.0;
-		gl_FragDepthEXT = depth;
+		// gl_FragDepthEXT = depth;  // Corentin commented this
 		
 		#if defined(color_type_depth)
 			color.r = linearDepth;
@@ -58786,7 +58786,7 @@ void main() {
 	
 	gl_FragColor = vec4(color.xyz, 1.0); 
 	
-	gl_FragDepthEXT = depth;
+	// gl_FragDepthEXT = depth;  // Corentin commented this
 
 
 }`;
