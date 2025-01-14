@@ -58853,7 +58853,7 @@ void main() {
 
 	gl_FragColor = vec4(color.xyz, 1.0); 
 
-	gl_FragDepthEXT = depth;
+	// gl_FragDepthEXT = depth;  // Corentin commented this
 }`;
 
 	Shaders["edl.vs"] = `
@@ -58944,7 +58944,7 @@ void main(){
 		float pz = dp.z / dp.w;
 		float fragDepth = (pz + 1.0) / 2.0;
 
-		gl_FragDepthEXT = fragDepth;
+		// gl_FragDepthEXT = fragDepth;  // Corentin commented this
 	}
 
 	if(depth == 0.0){
