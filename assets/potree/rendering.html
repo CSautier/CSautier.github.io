@@ -24,7 +24,7 @@
 	<script src="./libs/other/BinaryHeap.js"></script>
 	<script src="./libs/tween/tween.min.js"></script>
 	<script src="./libs/proj4/proj4.js"></script>
-
+	<script src="./libs/three.js/build/three.min.js"></script>
 	<script src="./build/potree/potree.js"></script>
 
 	<div id="handIcon">
@@ -52,9 +52,8 @@
 		<div id="potree_sidebar_container"> </div>
 	</div>
 	
-	<script type="module">
+	<script>
 
-	import * as THREE from "./libs/three.js/build/three.module.js";	
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		
 		viewer.setEDLEnabled(true);  // Eye dome lighting shader for nicer points
