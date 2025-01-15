@@ -53,12 +53,14 @@
 	</div>
 	
 	<script>
+		// Detect if the device is mobile
+		const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry|Opera Mini/i.test(navigator.userAgent);
 
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		
 		viewer.setEDLEnabled(true);  // Eye dome lighting shader for nicer points
 		viewer.setFOV(60);  // Field of View
-		viewer.useHQ = true;  // Circles for points instead of squares
+		viewer.useHQ = !isMobile;  // Circles for points instead of squares
 		viewer.setPointBudget(5_000_000);  // Max number of visible points before downsampling
 		viewer.setBackground("white");  // background color
 		viewer.loadSettingsFromURL();
