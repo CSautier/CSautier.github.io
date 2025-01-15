@@ -58548,7 +58548,7 @@ void main() {
 		pos = pos / pos.w;
 		float expDepth = pos.z;
 		depth = (pos.z + 1.0) / 2.0;
-		// gl_FragDepthEXT = depth;  // Corentin commented this
+		gl_FragDepthEXT = depth;
 		
 		#if defined(color_type_depth)
 			color.r = linearDepth;
@@ -58786,7 +58786,7 @@ void main() {
 	
 	gl_FragColor = vec4(color.xyz, 1.0); 
 	
-	// gl_FragDepthEXT = depth;  // Corentin commented this
+	gl_FragDepthEXT = depth;
 
 
 }`;
@@ -58853,7 +58853,7 @@ void main() {
 
 	gl_FragColor = vec4(color.xyz, 1.0); 
 
-	// gl_FragDepthEXT = depth;  // Corentin commented this
+	gl_FragDepthEXT = depth;
 }`;
 
 	Shaders["edl.vs"] = `
@@ -58944,7 +58944,7 @@ void main(){
 		float pz = dp.z / dp.w;
 		float fragDepth = (pz + 1.0) / 2.0;
 
-		// gl_FragDepthEXT = fragDepth;  // Corentin commented this
+		gl_FragDepthEXT = fragDepth;
 	}
 
 	if(depth == 0.0){
