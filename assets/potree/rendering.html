@@ -65,9 +65,9 @@
 		viewer.setBackground("white");  // background color
 		viewer.loadSettingsFromURL();
 		viewer.setDescription("");
-		// viewer.orbitControls.minDistance = 1.0;
-		// viewer.orbitControls.maxDistance = 100.0;
-		// viewer.orbitControls.maxPitchAngle = 0.0;
+		viewer.orbitControls.minDistance = 1.0;
+		viewer.orbitControls.maxDistance = 100.0;
+		viewer.orbitControls.maxPitchAngle = 0.0;
 		
 		const url = new URL(window.location.href);
 		const filePath = url.searchParams.get("data-path");
