@@ -55,6 +55,7 @@
 	<script>
 		// Detect if the device is mobile
 		const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry|Opera Mini/i.test(navigator.userAgent);
+		const timeout = isMobile ? 1000 : 100; // Adjust the delay time as needed
 
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		
@@ -74,7 +75,6 @@
 		
 		Potree.loadPointCloud(filePath, "rendering", function(e){
 			viewer.scene.addPointCloud(e.pointcloud);
-			console.log(e.pointcloud.position)
 			
 			let material = e.pointcloud.material;
 			material.size = 1;
@@ -85,7 +85,7 @@
 			setTimeout(() => {
 				viewer.scene.view.position.set(3.25, -2.10, 2.83);
 				viewer.scene.view.lookAt(new THREE.Vector3(5.03, -3.34, 2.19));
-			}, 100); // Adjust the delay time as needed
+			}, timeout);
 		});
 		
 	</script>
