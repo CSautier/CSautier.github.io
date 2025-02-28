@@ -3,7 +3,7 @@ layout: page
 permalink: /unit_test/
 title: "UNIT: Unsupervised Online Instance Segmentation through Time"
 navtitle: UNIT
-nav: true
+nav: false
 nav_order: 5
 description: 
 img: assets/img/12.jpg
