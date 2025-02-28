@@ -275,7 +275,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt", "assets/js/search/*.js", "assets/potree/*"]
+  exclude: ["robots.txt", "assets/js/search/*.js", "assets/potree/*", "assets/potree2/*"]
   uglifier_args:
     harmony: true
 
