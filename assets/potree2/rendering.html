@@ -96,7 +96,8 @@
 		const url = new URL(window.location.href);
 		const filePath = url.searchParams.get("data-path");
 		
-		Potree.loadPointCloud(filePath, "rendering", function(e){
+		// Potree.loadPointCloud(filePath, "rendering", function(e){
+		Potree.loadPointCloud("pointclouds/lion_takanawa_las/cloud.js", "rendering", function(e){
 			console.log(e.pointcloud)
 			viewer.scene.addPointCloud(e.pointcloud);
 			
