@@ -1,3 +1,38 @@
+// let pointFormatReaders = {
+//	0: function(dv) {
+//		return {
+//			"position": [ dv.getInt32(0, true), dv.getInt32(4, true), dv.getInt32(8, true)],
+//			"intensity": dv.getUint16(12, true),
+//			"classification": dv.getUint8(16, true)
+//		};
+//	},
+//	1: function(dv) {
+//		return {
+//			"position": [ dv.getInt32(0, true), dv.getInt32(4, true), dv.getInt32(8, true)],
+//			"intensity": dv.getUint16(12, true),
+//			"classification": dv.getUint8(16, true)
+//		};
+//	},
+//	2: function(dv) {
+//		return {
+//			"position": [ dv.getInt32(0, true), dv.getInt32(4, true), dv.getInt32(8, true)],
+//			"intensity": dv.getUint16(12, true),
+//			"classification": dv.getUint8(16, true),
+//			"color": [dv.getUint16(20, true), dv.getUint16(22, true), dv.getUint16(24, true)]
+//		};
+//	},
+//	3: function(dv) {
+//		return {
+//			"position": [ dv.getInt32(0, true), dv.getInt32(4, true), dv.getInt32(8, true)],
+//			"intensity": dv.getUint16(12, true),
+//			"classification": dv.getUint8(16, true),
+//			"color": [dv.getUint16(28, true), dv.getUint16(30, true), dv.getUint16(32, true)]
+//		};
+//	}
+// };
+//
+//
+
 
 function readUsingTempArrays(event) {
 
@@ -15,6 +50,11 @@ function readUsingTempArrays(event) {
 	let tempUint16 = new Uint16Array(temp);
 	let tempInt32 = new Int32Array(temp);
 	let sourceUint8 = new Uint8Array(buffer);
+	let sourceView = new DataView(buffer);
+	
+	let targetPointSize = 20;
+	let targetBuffer = new ArrayBuffer(numPoints * targetPointSize);
+	let targetView = new DataView(targetBuffer);
 
 	let tightBoundingBox = {
 		min: [ Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY ],
@@ -38,7 +78,7 @@ function readUsingTempArrays(event) {
 	let returnNumbers = new Uint8Array(rnBuff);
 	let numberOfReturns = new Uint8Array(nrBuff);
 	let pointSourceIDs = new Uint16Array(psBuff);
-
+	
 	for (let i = 0; i < numPoints; i++) {
 		// POSITION
 		tempUint8[0] = sourceUint8[i * sourcePointSize + 0];
@@ -46,19 +86,19 @@ function readUsingTempArrays(event) {
 		tempUint8[2] = sourceUint8[i * sourcePointSize + 2];
 		tempUint8[3] = sourceUint8[i * sourcePointSize + 3];
 		let x = tempInt32[0];
-
+		
 		tempUint8[0] = sourceUint8[i * sourcePointSize + 4];
 		tempUint8[1] = sourceUint8[i * sourcePointSize + 5];
 		tempUint8[2] = sourceUint8[i * sourcePointSize + 6];
 		tempUint8[3] = sourceUint8[i * sourcePointSize + 7];
 		let y = tempInt32[0];
-
+		
 		tempUint8[0] = sourceUint8[i * sourcePointSize + 8];
 		tempUint8[1] = sourceUint8[i * sourcePointSize + 9];
 		tempUint8[2] = sourceUint8[i * sourcePointSize + 10];
 		tempUint8[3] = sourceUint8[i * sourcePointSize + 11];
 		let z = tempInt32[0];
-
+		
 		x = x * scale[0] + offset[0] - event.data.mins[0];
 		y = y * scale[1] + offset[1] - event.data.mins[1];
 		z = z * scale[2] + offset[2] - event.data.mins[2];
@@ -144,7 +184,7 @@ function readUsingTempArrays(event) {
 
 	performance.clearMarks();
 	performance.clearMeasures();
-
+	
 	let message = {
 		mean: mean,
 		position: pBuff,
@@ -185,11 +225,16 @@ function readUsingDataView(event) {
 	let scale = event.data.scale;
 	let offset = event.data.offset;
 
+	let sourceUint8 = new Uint8Array(buffer);
 	let sourceView = new DataView(buffer);
+	
+	let targetPointSize = 40;
+	let targetBuffer = new ArrayBuffer(numPoints * targetPointSize);
+	let targetView = new DataView(targetBuffer);
 
 	let tightBoundingBox = {
-		min: [Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE],
-		max: [-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE]
+		min: [ Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY ],
+		max: [ Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY ]
 	};
 
 	let mean = [0, 0, 0];
@@ -210,12 +255,6 @@ function readUsingDataView(event) {
 	let numberOfReturns = new Uint8Array(nrBuff);
 	let pointSourceIDs = new Uint16Array(psBuff);
 	
-	const rangeIntensity = [Infinity, -Infinity];
-	const rangeClassification = [Infinity, -Infinity];
-	const rangeReturnNumber = [Infinity, -Infinity];
-	const rangeNumberOfReturns = [Infinity, -Infinity];
-	const rangeSourceID = [Infinity, -Infinity];
-
 	for (let i = 0; i < numPoints; i++) {
 		// POSITION
 		let ux = sourceView.getInt32(i * sourcePointSize + 0, true);
@@ -225,6 +264,10 @@ function readUsingDataView(event) {
 		x = ux * scale[0] + offset[0] - event.data.mins[0];
 		y = uy * scale[1] + offset[1] - event.data.mins[1];
 		z = uz * scale[2] + offset[2] - event.data.mins[2];
+
+		//x = ux * scale[0];
+		//y = uy * scale[1];
+		//z = uz * scale[2];
 
 		positions[3 * i + 0] = x;
 		positions[3 * i + 1] = y;
@@ -245,8 +288,6 @@ function readUsingDataView(event) {
 		// INTENSITY
 		let intensity = sourceView.getUint16(i * sourcePointSize + 12, true);
 		intensities[i] = intensity;
-		rangeIntensity[0] = Math.min(rangeIntensity[0], intensity);
-		rangeIntensity[1] = Math.max(rangeIntensity[1], intensity);
 
 		// RETURN NUMBER, stored in the first 3 bits - 00000111
 		// number of returns stored in next 3 bits   - 00111000
@@ -255,25 +296,17 @@ function readUsingDataView(event) {
 		let numberOfReturn = (returnNumberAndNumberOfReturns & 0b00111000) >> 3;
 		returnNumbers[i] = returnNumber;
 		numberOfReturns[i] = numberOfReturn;
-		rangeReturnNumber[0] = Math.min(rangeReturnNumber[0], returnNumber);
-		rangeReturnNumber[1] = Math.max(rangeReturnNumber[1], returnNumber);
-		rangeNumberOfReturns[0] = Math.min(rangeNumberOfReturns[0], numberOfReturn);
-		rangeNumberOfReturns[1] = Math.max(rangeNumberOfReturns[1], numberOfReturn);
 
 		// CLASSIFICATION
 		let classification = sourceView.getUint8(i * sourcePointSize + 15, true);
 		classifications[i] = classification;
-		rangeClassification[0] = Math.min(rangeClassification[0], classification);
-		rangeClassification[1] = Math.max(rangeClassification[1], classification);
 
 		// POINT SOURCE ID
 		let pointSourceID = sourceView.getUint16(i * sourcePointSize + 18, true);
 		pointSourceIDs[i] = pointSourceID;
-		rangeSourceID[0] = Math.min(rangeSourceID[0], pointSourceID);
-		rangeSourceID[1] = Math.max(rangeSourceID[1], pointSourceID);
 
 		// COLOR, if available
-		if (pointFormatID === 2) {
+		if (pointFormatID === 2) {			
 			let r = sourceView.getUint16(i * sourcePointSize + 20, true) / 256;
 			let g = sourceView.getUint16(i * sourcePointSize + 22, true) / 256;
 			let b = sourceView.getUint16(i * sourcePointSize + 24, true) / 256;
@@ -303,14 +336,6 @@ function readUsingDataView(event) {
 	performance.clearMarks();
 	performance.clearMeasures();
 
-	const ranges = {
-		"intensity": rangeIntensity,
-		"classification": rangeClassification,
-		"return number": rangeReturnNumber,
-		"number of returns": rangeNumberOfReturns,
-		"source id": rangeSourceID,
-	};
-
 	let message = {
 		mean: mean,
 		position: pBuff,
@@ -321,8 +346,7 @@ function readUsingDataView(event) {
 		numberOfReturns: nrBuff,
 		pointSourceID: psBuff,
 		tightBoundingBox: tightBoundingBox,
-		indices: indices,
-		ranges: ranges,
+		indices: indices
 	};
 
 	let transferables = [
