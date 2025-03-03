@@ -7962,6 +7962,12 @@ Potree.OrbitControls = class OrbitControls extends THREE.EventDispatcher{
 		this.pitchDelta = 0;
 		this.panDelta = new THREE.Vector2(0, 0);
 		this.radiusDelta = 0;
+		this.minDistance = 0.0;
+		this.maxDistance = Infinity;
+		this.minPitchAngle = -Math.PI/2;
+		this.maxPitchAngle = Math.PI/2;
+		this.minYawAngle = -Infinity;
+		this.maxYawAngle = Infinity;
 
 		this.tweens = [];
 
@@ -8164,6 +8170,11 @@ Potree.OrbitControls = class OrbitControls extends THREE.EventDispatcher{
 			yaw -= progression * this.yawDelta;
 			pitch -= progression * this.pitchDelta;
 
+			yaw = Math.max(yaw, this.minYawAngle);
+			yaw = Math.min(yaw, this.maxYawAngle);
+			pitch = Math.max(pitch, this.minPitchAngle);
+			pitch = Math.min(pitch, this.maxPitchAngle);
+
 			view.yaw = yaw;
 			view.pitch = pitch;
 
@@ -8188,6 +8199,8 @@ Potree.OrbitControls = class OrbitControls extends THREE.EventDispatcher{
 
 			// let radius = view.radius + progression * this.radiusDelta * view.radius * 0.1;
 			let radius = view.radius + progression * this.radiusDelta;
+			radius = Math.max(radius, this.minDistance);
+			radius = Math.min(radius, this.maxDistance);
 
 			let V = view.direction.multiplyScalar(-radius);
 			let position = new THREE.Vector3().addVectors(view.getPivot(), V);
