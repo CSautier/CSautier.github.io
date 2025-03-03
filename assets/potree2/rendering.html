@@ -8,11 +8,6 @@
 	<title>Potree Viewer</title>
 
 	<link rel="stylesheet" type="text/css" href="./build/potree/potree.css">
-	<link rel="stylesheet" type="text/css" href="./libs/jquery-ui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="./libs/perfect-scrollbar/css/perfect-scrollbar.css">
-	<link rel="stylesheet" type="text/css" href="./libs/openlayers3/ol.css">
-	<link rel="stylesheet" type="text/css" href="./libs/spectrum/spectrum.css">
-	<link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css">
 	<style> 
 		#handIcon {
 		  position: absolute;
@@ -28,17 +23,10 @@
 
 <body>
 	<script src="./libs/jquery/jquery-3.1.1.min.js"></script>
-	<script src="./libs/spectrum/spectrum.js"></script>
-	<script src="./libs/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-	<script src="./libs/jquery-ui/jquery-ui.min.js"></script>
 	<script src="./libs/three.js/build/three.min.js"></script>
 	<script src="./libs/other/BinaryHeap.js"></script>
 	<script src="./libs/tween/tween.min.js"></script>
-	<script src="./libs/d3/d3.js"></script>
 	<script src="./libs/proj4/proj4.js"></script>
-	<script src="./libs/openlayers3/ol.js"></script>
-	<script src="./libs/i18next/i18next.js"></script>
-	<script src="./libs/jstree/jstree.js"></script>
 	<script src="./build/potree/potree.js"></script>
 	<script src="./libs/plasio/js/laslaz.js"></script>
 
@@ -69,15 +57,14 @@
 	<script>
 		// Detect if the device is mobile
 		const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry|Opera Mini/i.test(navigator.userAgent);
-		const timeout = isMobile ? 1000 : 100; // Adjust the delay time as needed
 
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		
 		viewer.setEDLEnabled(true);  // Eye dome lighting shader for nicer points
 		viewer.setFOV(60);  // Field of View
 		viewer.useHQ = !isMobile;  // Circles for points instead of squares
-		viewer.setPointBudget(1*1000*1000);  // Max number of visible points before downsampling
-		viewer.setBackground("white");  // background color
+		// viewer.setPointBudget(1*1000*1000);  // Max number of visible points before downsampling
+		viewer.setBackground("None");  // background color
 		viewer.loadSettingsFromURL();
 		viewer.setDescription("");
 		viewer.orbitControls.minDistance = 1.0;
@@ -95,12 +82,8 @@
 			material.size = 1;
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
 			
-			viewer.fitToScreen();
-			// Use a timeout to delay setting the position
-			setTimeout(() => {
-				viewer.scene.view.position.set(3.25, -2.10, 2.83);
-				viewer.scene.view.lookAt(new THREE.Vector3(5.03, -3.34, 2.19));
-			}, timeout);
+			viewer.scene.view.position.set(3.25, -2.10, 2.83);
+			viewer.scene.view.lookAt(5.03, -3.34, 2.19);
 		});
 		
 	</script>
