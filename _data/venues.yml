@@ -5,3 +5,6 @@
 "3DV":
   url: "https://3dvconf.github.io/"
   color: "#ff9033"
+
+"Under review":
+  color: "#999999"

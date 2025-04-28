@@ -5,6 +5,7 @@ repo_description_lines_max: 2
 github_repos:
   - valeoai/SLidR
   - valeoai/BEVContrast
+  - valeoai/ALPINE
   - valeoai/UNIT
   - valeoai/ALSO
   - valeoai/ScaLR
