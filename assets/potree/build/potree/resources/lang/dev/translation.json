@@ -1,6 +1,1 @@
-{
-	"simple_dev": "ok_from_dev",
-	"test": {
-		"simple_dev": "ok_from_dev"
-	}
-}
+{"simple_dev":"ok_from_dev","test":{"simple_dev":"ok_from_dev"}}
