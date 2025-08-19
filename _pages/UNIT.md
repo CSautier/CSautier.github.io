@@ -4,7 +4,7 @@ permalink: /unit/
 title: "UNIT: Unsupervised Online Instance Segmentation through Time"
 navtitle: UNIT
 nav: true
-nav_order: 5
+nav_order: 3
 description: 
 img: assets/img/12.jpg
 importance: 1
